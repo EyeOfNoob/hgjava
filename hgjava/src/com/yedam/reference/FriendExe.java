@@ -18,12 +18,20 @@ public class FriendExe {
 //			분석 - 친구들의 평균점수:85, 최고점수:90
 				switch (menu) {
 					case 1:		//등록
+						boolean nameCk = false;
 						System.out.print("이름입력>> ");
 						String name = scn.nextLine();
 						if(name == "") {
-							System.out.println("이름을 입력해주세요");
-							menu = 1;
-							break;
+							nameCk = true;
+							}
+						while(nameCk) {
+							if(name == "") {
+								System.out.println("에러발생. 공백은 이름으로 사용될 수 없습니다.");
+								System.out.print("이름입력>> ");
+								name = scn.nextLine();
+							}else {
+								nameCk = false;
+							}
 						}
 						System.out.print("몸무게입력>> ");
 						double weight = Double.parseDouble(scn.nextLine());
@@ -45,6 +53,10 @@ public class FriendExe {
 						break;
 						
 					case 2:		//조회
+						if(friends[0] == null) {
+							System.out.println("친구 목록이 존재하지 않습니다. 등록 먼저 해주세요");
+							break;
+						}
 	//					전체목록..이름: 홍길동, 몸무게:77.2kg, 점수: 80점.
 						for(int i = 0; i < friends.length; i++) {
 							if(friends[i] != null) {
@@ -57,12 +69,21 @@ public class FriendExe {
 						break;
 						
 					case 3:		//수정
+						if(friends[0] == null) {
+							System.out.println("친구 목록이 존재하지 않습니다. 등록 먼저 해주세요");
+							break;
+						}
 	//					 친구이름입력 => 점수 수정
 						int sScore = -1;
 						double sWeight = -1;
 						int cCount = 0;
 						System.out.print("조회할 이름>> ");
 						String cName = scn.nextLine();
+						if(cName == "") {
+							System.out.println("에러발생. 이름을 입력해주세요");
+							menu = 2;
+							break;
+						}
 						
 						System.out.print("수정 몸무게>> ");
 						String cWeight = scn.nextLine();
@@ -101,6 +122,10 @@ public class FriendExe {
 						}
 						break;
 					case 4:		//삭제
+						if(friends[0] == null) {
+							System.out.println("친구 목록이 존재하지 않습니다. 등록 먼저 해주세요");
+							break;
+						}
 						System.out.print("삭제할 이름>> ");
 						String dName = scn.nextLine();
 						
@@ -118,6 +143,10 @@ public class FriendExe {
 						}
 						break;
 					case 5:		//점수조회 - 입력점수 이상인 친구만 출력
+						if(friends[0] == null) {
+							System.out.println("점수를 조회할 친구 목록이 존재하지 않습니다. 등록 먼저 해주세요");
+							break;
+						}
 						boolean checkS = false;
 						System.out.print("조회할 점수>> ");
 						int chScore = Integer.parseInt(scn.nextLine());
@@ -137,6 +166,10 @@ public class FriendExe {
 						System.out.println("조회 완료");
 						break;
 					case 6:		//분석 - 친구들의 평균점수:85, 최고점수:90
+						if(friends[0] == null) {
+							System.out.println("분석할 친구 목록이 존재하지 않습니다. 등록 먼저 해주세요");
+							break;
+						}
 						double sum = 0;
 						int avgC = 0;
 						int max = 0;
@@ -158,7 +191,7 @@ public class FriendExe {
 						break;
 						
 					default :	//입력오류
-						System.out.println("메뉴 번호가 틀렸습니다. 입력값을 확인해 주세요");
+						System.out.println("에러발생. 입력값을 확인해 주세요");
 						break;
 				}
 			} catch (Exception e) {
