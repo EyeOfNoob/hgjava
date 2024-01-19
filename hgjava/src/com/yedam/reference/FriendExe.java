@@ -77,12 +77,21 @@ public class FriendExe {
 						int sScore = -1;
 						double sWeight = -1;
 						int cCount = 0;
+						
+						nameCk = false;
 						System.out.print("조회할 이름>> ");
 						String cName = scn.nextLine();
 						if(cName == "") {
-							System.out.println("에러발생. 이름을 입력해주세요");
-							menu = 2;
-							break;
+							nameCk = true;
+							}
+						while(nameCk) {
+							if(cName == "") {
+								System.out.println("에러발생. 공백은 이름으로 사용될 수 없습니다.");
+								System.out.print("이름입력>> ");
+								cName = scn.nextLine();
+							}else {
+								nameCk = false;
+							}
 						}
 						
 						System.out.print("수정 몸무게>> ");
@@ -172,7 +181,7 @@ public class FriendExe {
 						}
 						double sum = 0;
 						int avgC = 0;
-						int max = 0;
+						int max = friends[0].score;
 						for(int i = 0; i < friends.length; i++) {
 							if(friends[i] != null) {
 								sum += friends[i].score;
