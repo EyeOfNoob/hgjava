@@ -14,8 +14,15 @@ public class Student {
 	private String sname;
 	private int score;
 	private double height; 
+	private boolean OnSchool;
 	
-//	this.sno = "S001"; 같은 값을 미리 입력하는 것으로 초기값 지정 가능.
+	public boolean isOnSchool() {
+			return OnSchool;
+	}
+	public void setOnSchool(boolean onSchool) {
+		OnSchool = onSchool;
+	}
+	//	this.sno = "S001"; 같은 값을 미리 입력하는 것으로 초기값 지정 가능.
 //	초기값이 없을시 각 타입에 따라 null, 0, 0.0등으로 초기값이 지정됨
 //	외부 패키지에서 import를 통해 불러서 사용하기위해서 public 추가.
 //	패키지 내부에서만 사용될때는 public 생략가능
@@ -53,7 +60,7 @@ public Student(String sno, String sname, int score, double height) {
 		this.height = height;
 	}
 	//	메소드
-	void showInfo() {
+	public void showInfo() {
 		System.out.printf("번호는 %s, 이름은 %s, 점수는 %d입니다.\n", sno, sname, score);
 //		sno는 정확히는 this.sno지만 같은 이름의 변수가 없는경우엔 생략가능.나머지도 마찬가지.
 	}

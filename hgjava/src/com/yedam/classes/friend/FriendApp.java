@@ -32,7 +32,7 @@ public class FriendApp {
 		
 //		삭제
 	public boolean remove(String fname) {
-		for (int i=1; i<friends.length;i++) {
+		for (int i=0; i<friends.length;i++) {
 			if(friends[i] != null && friends[i].getFname().equals(fname)) {
 				friends[i] = null;
 				return true;
@@ -47,7 +47,7 @@ public class FriendApp {
 		
 //		단건조회
 	public Friend get(String fname) {
-		for (int i=1; i<friends.length;i++) {
+		for (int i=0; i<friends.length;i++) {
 			if(friends[i] != null && friends[i].getFname().equals(fname)) {
 				return friends[i];
 			}

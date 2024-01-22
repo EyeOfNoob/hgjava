@@ -94,10 +94,10 @@ public class FriendExe {
 			case 4: //삭제
 				System.out.println("삭제할 친구이름 : ");
 				fname = scn.nextLine();
-				if(app.get(fname) == null) {
-					System.out.println("[알림]존재하지 않는 이름입니다. 메뉴선택으로 돌아갑니다.");
-					break;
-				}
+//				if(app.get(fname) == null) {
+//					System.out.println("[알림]존재하지 않는 이름입니다. 메뉴선택으로 돌아갑니다.");
+//					break;
+//				}
 				if(app.remove(fname)) {
 					System.out.println("==삭제완료==");
 				}else {
