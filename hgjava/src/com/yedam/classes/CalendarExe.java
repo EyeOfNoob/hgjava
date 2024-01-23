@@ -28,20 +28,41 @@ public class CalendarExe {
 		date.setMonth(1);
 //		2024-10-5
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		
+
 		try {
 			date = sdf.parse("2024-03-01"); // String -> Date
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		drawCalendar(date); //숙제
+
+		drawCalendar(date); // 숙제
 //		System.out.println(date);
 //		System.out.println(date.getYear()+1900);
 //		System.out.println(date.getDate());
 	}
-	
+
 	static void drawCalendar(Date date) {
+		int year = date.getYear() + 1900;
+		int month = date.getMonth() + 1;
+		
+		System.out.printf("\t%d년 %d월 달력\n", year, month);
+		System.out.print("Sun Mon Tue Wed Thd Fri Sat\n");
+		int startDay = date.getDay();
+		int lastDay = 31;
+        if (startDay == 0) {
+            startDay = 7;
+        }
+        for (int i = 0; i < startDay; i++) {
+            System.out.print("    ");
+        }
+        for (int i = 1; i <= lastDay; i++) {
+			if (i <= lastDay) {
+				System.out.printf("%3d ", i);
+			}
+			if ((startDay+i) % 7 == 0) {
+				System.out.println();
+			}
+		}
 		
 	}
 
@@ -50,13 +71,14 @@ public class CalendarExe {
 		Calendar cal = Calendar.getInstance();
 		int today = 1;
 		cal.set(year, month - 1, 1);
-		int lastDay = cal.getActualMaximum(Calendar.DATE) - 1;
+		int lastDay = cal.getActualMaximum(Calendar.DATE);
 		int startDay = cal.get(Calendar.DAY_OF_WEEK);
 		System.out.println(cal.getActualMaximum(Calendar.DATE));
 
 		System.out.printf("\t%d년 %d월 달력\n", year, month);
 		System.out.print("Sun Mon Tue Wed Thd Fri Sat");
-		for (int i = 0; i <= lastDay; i++) {
+
+		for (int i = 0; i < lastDay; i++) {
 			if (i < startDay) {
 				System.out.print("    ");
 				lastDay++;
