@@ -10,9 +10,18 @@ public class FriendExe {
 		FriendApp app = new FriendApp();
 
 		while (run) {
-			System.out.println("1.등록 2.조회 3.수정 4.삭제 9.종료");
-			int menu = Integer.parseInt(scn.nextLine());
-
+			int menu = 0;
+			
+			while (true) {
+				System.out.println("1.등록 2.조회 3.수정 4.삭제 9.종료");
+				try {
+					menu = Integer.parseInt(scn.nextLine());
+					break;
+				} catch (NumberFormatException e) {
+					System.out.println("숫자입력.");
+				}
+			}
+			
 			switch (menu) {
 			case 1: // 등록 1)이름연락처 2)학교친구 3)회사친구
 				System.out.println("1.친구 2.학교 3.회사");
@@ -104,28 +113,28 @@ public class FriendExe {
 				}
 //				=========================================
 
-					if (subMenu == 1) {
-						System.out.print("수정할 학교>> ");
-						String univ = scn.nextLine();
-						System.out.print("수정할 전공>> ");
-						String major = scn.nextLine();
-						if (app.modify(phone, univ, major)) {
-							System.out.println("==수정완료==");
-						} else {
-							System.out.println("==수정실패==");
-						}
-
-					} else if (subMenu == 2) {
-						System.out.print("수정할 회사>> ");
-						String company = scn.nextLine();
-						System.out.print("수정할 부서>> ");
-						String dept = scn.nextLine();
-						if (app.modify(phone, company, dept)) {
-							System.out.println("==수정완료==");
-						} else {
-							System.out.println("==수정실패==");
-						}
+				if (subMenu == 1) {
+					System.out.print("수정할 학교>> ");
+					String univ = scn.nextLine();
+					System.out.print("수정할 전공>> ");
+					String major = scn.nextLine();
+					if (app.modify(phone, univ, major)) {
+						System.out.println("==수정완료==");
+					} else {
+						System.out.println("==수정실패==");
 					}
+
+				} else if (subMenu == 2) {
+					System.out.print("수정할 회사>> ");
+					String company = scn.nextLine();
+					System.out.print("수정할 부서>> ");
+					String dept = scn.nextLine();
+					if (app.modify(phone, company, dept)) {
+						System.out.println("==수정완료==");
+					} else {
+						System.out.println("==수정실패==");
+					}
+				}
 				break;
 
 			case 4: // 삭제
