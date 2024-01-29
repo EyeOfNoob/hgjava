@@ -22,6 +22,7 @@ public class MediaThread extends Thread {
 				Thread.sleep(clip.getMicrosecondLength() / 1000);
 			}catch (Exception e){
 //				예외는 미디어 실행을 중단하기 위한 조건.
+				e.printStackTrace();
 				System.out.println("음악재생 종료.");
 				break;
 			}

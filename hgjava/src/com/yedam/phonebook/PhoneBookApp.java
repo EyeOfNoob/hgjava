@@ -9,9 +9,9 @@ public class PhoneBookApp {
 		//UserManager=>userCheck(아이디,비번)
 		//3번 연속으로 인증이 실패할 경우 프로그램 종료.
 		
-		
 		int menu = 0;
 		MediaThread mediaThread = new MediaThread();
+		mediaThread.start();
 		while (true) {
 			try {
 				MenuViewer.showMenu();
@@ -33,8 +33,10 @@ public class PhoneBookApp {
 				} else if (menu == InitMenu.PLAY) {
 					if(mediaThread.isAlive()) {
 						System.out.println("이미 실행중입니다.");
+					} else {
+						mediaThread = new MediaThread();
+						mediaThread.start();
 					}
-					mediaThread.start();
 				}
 				
 			} catch (MenuChoiceException e) {
