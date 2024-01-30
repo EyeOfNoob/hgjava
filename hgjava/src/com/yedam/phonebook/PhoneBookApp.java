@@ -11,7 +11,6 @@ public class PhoneBookApp {
 		
 		int menu = 0;
 		MediaThread mediaThread = new MediaThread();
-		mediaThread.start();
 		while (true) {
 			try {
 				MenuViewer.showMenu();
